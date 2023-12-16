@@ -16,7 +16,7 @@ la librería utilizada en flask https://flask-wtf.readthedocs.io/en/1.2.x/
 ```
 export FLASK_APP=main.py
 ```
--en wundows:
+-en windows:
 ```
 set FLASK_APP=main.py
 ```
