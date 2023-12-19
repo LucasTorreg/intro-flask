@@ -1,5 +1,5 @@
 #importar la librería de flask
-from flask import Flask
+from flask import Flask, render_template
 
 #inicializar la variable app con flask
 app =  Flask(__name__)
@@ -16,9 +16,9 @@ def lista_frutas():
     return list_fruta
 
 
-@app.route("/nombre/<name>")
-def tunombre(name):
-    return f"hola {name}, cómo estás?"
+@app.route("/nombre/<n>/apellido/<a>/edad/<int:e>")
+def tunombre(n,a,e):
+    return f"Eres {n} {a} y tienes {e} años de edad"
 
 @app.route("/numero/<int:parametro>")
 def cuadrado(parametro):
@@ -38,3 +38,10 @@ def operacion(valor1, operador, valor2):
         return f"La multiplicación de {valor1} y {valor2} es {valor1*valor2}"
     elif operador == ":" or operador == "division":
         return f"La división de {valor1} y {valor2} es {valor1//valor2}"
+    
+
+@app.route("/<dato>")
+def mihtml(dato):
+    dia="Lunes"
+    list_fruta = ["Platano", "Fresa", "Piña", "Melón", "Naranja"]
+    return render_template("hola.html", variable = dato, frutas = list_fruta, day = dia)
